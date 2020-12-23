@@ -1,9 +1,6 @@
 #!/bin/sh
 cd ..
 
-export DYLD_LIBRARY_PATH=`pwd`/Libraries.bundle
-export DYLD_FRAMEWORK_PATH="Frameworks"
-
 # Get the user input:
 read -p "Username: " ttiUsername
 read -p "Gameserver (DEFAULT:  167.114.28.238): " TTI_GAMESERVER
@@ -21,4 +18,4 @@ echo "Username: $ttiUsername"
 echo "Gameserver: $TTI_GAMESERVER"
 echo "==============================="
 
-ppython -m toontown.toonbase.ClientStart
+python -m toontown.toonbase.ClientStart
