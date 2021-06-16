@@ -1,5 +1,7 @@
 #!/bin/sh
-cd ..
+
+BASE="$(dirname "$0")/.."
+cd "$BASE"
 
 # Get the user input:
 read -p "Username: " ttiUsername
@@ -16,4 +18,4 @@ echo "Username: $ttiUsername"
 echo "Gameserver: $TTI_GAMESERVER"
 echo "==============================="
 
-python -m toontown.toonbase.ClientStart
+"../bin/python" -m toontown.toonbase.ClientStart

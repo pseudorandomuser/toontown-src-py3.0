@@ -4,15 +4,12 @@ BASE="$(dirname "$0")/.."
 cd "$BASE"
 
 # Get the user input:
-read -p "Username: " ttiUsername
-read -p "Gameserver (DEFAULT:  167.114.28.238): " TTI_GAMESERVER
-TTI_GAMESERVER=${TTI_GAMESERVER:-"167.114.28.238"}
 
 # Export the environment variables:
-export ttiUsername=$ttiUsername
+export ttiUsername="admin"
 export ttiPassword="password"
-export TTI_PLAYCOOKIE=$ttiUsername
-export TTI_GAMESERVER=$TTI_GAMESERVER
+export TTI_PLAYCOOKIE="$ttiUsername"
+export TTI_GAMESERVER="127.0.0.1"
 
 echo "==============================="
 echo "Starting Toontown Online..."

@@ -1,5 +1,7 @@
 #!/bin/sh
-cd ../..
+
+BASE="$(dirname "$0")/../.."
+cd "$BASE"
 
 # Define some constants for our AI server:
 MAX_CHANNELS=999999
@@ -19,6 +21,6 @@ echo "Astron IP: $ASTRON_IP"
 echo "Event Logger IP: $EVENTLOGGER_IP"
 echo "==============================="
 
-python -m toontown.uberdog.ServiceStart --base-channel $BASE_CHANNEL \
+"../bin/python" -m toontown.uberdog.ServiceStart --base-channel $BASE_CHANNEL \
                  --max-channels $MAX_CHANNELS --stateserver $STATESERVER \
                  --astron-ip $ASTRON_IP --eventlogger-ip $EVENTLOGGER_IP

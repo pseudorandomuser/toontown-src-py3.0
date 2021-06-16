@@ -23,13 +23,13 @@ class MagicWordManager(DistributedObject.DistributedObject):
         if not self.cr.wantMagicWords:
             return
 
-        if magicWord.startswith('~~'):
+        if magicWord.startswith('//'):
             if lastClickedNametag == None:
                 target = base.localAvatar
             else:
                 target = lastClickedNametag
             magicWord = magicWord[2:]
-        if magicWord.startswith('~'):
+        if magicWord.startswith('/'):
             target = base.localAvatar
             magicWord = magicWord[1:]
 

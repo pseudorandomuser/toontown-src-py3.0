@@ -215,7 +215,7 @@ class DistributedPlayer(DistributedAvatar.DistributedAvatar, PlayerBase.PlayerBa
             pass
 
     def b_setChat(self, chatString, chatFlags):
-        if self.cr.wantMagicWords and len(chatString) > 0 and chatString[0] == '~':
+        if self.cr.wantMagicWords and len(chatString) > 0 and chatString[0] == '/':
             messenger.send('magicWord', [chatString])
         else:
             if base.config.GetBool('want-chatfilter-hacks', 0):

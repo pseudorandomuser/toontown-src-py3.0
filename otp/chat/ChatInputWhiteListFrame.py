@@ -179,7 +179,7 @@ class ChatInputWhiteListFrame(FSM.FSM, DirectFrame):
         return self.active
 
     def sendChat(self, text, overflow = False):
-        if not (len(text) > 0 and text[0] in ['~', '>']):
+        if not (len(text) > 0 and text[0] in ['/', '>']):
             if self.prefilter:
                 words = text.split(' ')
                 newwords = []
@@ -209,7 +209,7 @@ class ChatInputWhiteListFrame(FSM.FSM, DirectFrame):
             localAvatar.chatMgr.messageSent()
 
     def sendChatBySwitch(self, text):
-        if len(text) > 0 and text[0] == '~':
+        if len(text) > 0 and text[0] == '/':
             base.talkAssistant.sendOpenTalk(text)
         elif self.sendBy == 'Mode':
             self.sendChatByMode(text)
@@ -237,7 +237,7 @@ class ChatInputWhiteListFrame(FSM.FSM, DirectFrame):
             base.talkAssistant.sendAvatarGuildWLChat(text)
         elif state == 'CrewChat':
             base.talkAssistant.sendAvatarCrewWLChat(text)
-        elif len(text) > 0 and text[0] == '~':
+        elif len(text) > 0 and text[0] == '/':
             base.talkAssistant.sendOpenTalk(text)
         else:
             base.talkAssistant.sendOpenTalk(text)
@@ -278,7 +278,7 @@ class ChatInputWhiteListFrame(FSM.FSM, DirectFrame):
 
     def applyFilter(self, keyArgs, strict = False):
         text = self.chatEntry.get(plain=True)
-        if text.startswith('~'):
+        if text.startswith('/'):
             self.okayToSubmit = True
         else:
             words = text.split(' ')

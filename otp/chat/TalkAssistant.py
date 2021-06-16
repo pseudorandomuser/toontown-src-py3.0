@@ -573,7 +573,7 @@ class TalkAssistant(DirectObject.DirectObject):
 
     def sendOpenTalk(self, message):
         error = None
-        if base.cr.wantMagicWords and len(message) > 0 and message[0] == '~':
+        if base.cr.wantMagicWords and len(message) > 0 and message[0] == '/':
             messenger.send('magicWord', [message])
             self.receiveDeveloperMessage(message)
         else:
