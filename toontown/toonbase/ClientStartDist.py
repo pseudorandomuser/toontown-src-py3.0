@@ -4,12 +4,16 @@
 
 # This is a temp patch.
 # It should really be done by the runtime (e.g. infinite.exe):
-import sys
-sys.path = ['.']
+
+#This breaks shared library loading on macOS
+#import sys
+#sys.path = ['.']
 
 # Replace some modules that do exec:
-import collections
-collections.namedtuple = lambda *x: tuple
+
+#This breaks shutil functionality
+#import collections
+#collections.namedtuple = lambda *x: tuple
 
 # This is included in the package by the prepare_client script. It contains the
 # PRC file data, and (stripped) DC file:
