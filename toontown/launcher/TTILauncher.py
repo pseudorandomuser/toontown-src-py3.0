@@ -48,6 +48,7 @@ class TTILauncher(LauncherBase):
     def getPlayToken(self):
         # This is a temporary fix for dealing with getting the same play-
         # cookie on both Windows and Linux platforms.
+        """
         if __debug__:
             token = self.getValue('TTI_PLAYCOOKIE')
         else:
@@ -57,7 +58,9 @@ class TTILauncher(LauncherBase):
                 token = ''
                 return token
                 print ('WARNING Something went wrong, using NULL cookie.')
-        return token
+        """
+        #return token
+        return self.getValue('TTI_PLAYCOOKIE')
 
     def getGameServer(self):
         return self.getValue('TTI_GAMESERVER')
