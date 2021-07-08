@@ -17,7 +17,7 @@ aux-display p3tinydisplay
 #framebuffer-multisample 1
 #multisamples 2
 
-show-frame-rate-meter #t
+show-frame-rate-meter #f
 
 # Models:
 model-cache-models #t
