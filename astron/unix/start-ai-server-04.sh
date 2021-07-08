@@ -10,8 +10,8 @@ ASTRON_IP="127.0.0.1:7100"
 EVENTLOGGER_IP="127.0.0.1:7198"
 
 # Get the user input:
-DISTRICT_NAME=Nuttyboro
-BASE_CHANNEL=401000000
+DISTRICT_NAME="Sentosa"
+BASE_CHANNEL=404000000
 
 echo "==============================="
 echo "Starting Toontown Infinite AI server..."
@@ -26,4 +26,4 @@ echo "==============================="
 "../bin/python" -m toontown.ai.ServiceStart --base-channel $BASE_CHANNEL \
                      --max-channels $MAX_CHANNELS --stateserver $STATESERVER \
                      --astron-ip $ASTRON_IP --eventlogger-ip $EVENTLOGGER_IP \
-                     --district-name $DISTRICT_NAME
+                     --district-name "$DISTRICT_NAME"
