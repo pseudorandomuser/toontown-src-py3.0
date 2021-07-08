@@ -1,0 +1,1 @@
+TTI_GAMESERVER=127.0.0.1 TTI_PLAYCOOKIE=admin ./build/macosx_10_9_x86_64/ToonTown\ Reloaded.app/Contents/MacOS/ToonTown\ Reloaded
