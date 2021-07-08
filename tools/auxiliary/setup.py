@@ -18,8 +18,8 @@ setup(
             'include_modules': {'*': [
                 'toontown.*.*',
                 'otp.*.*',
-                'pandac',
-                'pandac.PandaModules',
+                'pandac.*.*',
+                'direct.*.*',
             ]},
             'platforms': [
                 'macosx_10_9_x86_64'
