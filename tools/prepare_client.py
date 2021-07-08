@@ -21,11 +21,11 @@ parser.add_argument('--resources-dir', default='../resources',
                     help='The directory of the Toontown Infinite resources.')
 parser.add_argument('--config-dir', default='../config/release',
                     help='The directory of the Toontown Infinite configuration files.')
-parser.add_argument('--include', '-i', action='append',
+parser.add_argument('--include', '-i', action='append', default=[],
                     help='Explicitly include this file in the build.')
-parser.add_argument('--exclude', '-x', action='append',
+parser.add_argument('--exclude', '-x', action='append', default=[],
                     help='Explicitly exclude this file from the build.')
-parser.add_argument('--vfs', action='append',
+parser.add_argument('--vfs', action='append', default=[],
                     help='Add this file to the virtual file system at runtime.')
 parser.add_argument('modules', nargs='*', default=['otp', 'toontown'],
                     help='The Toontown Infinite modules to be included in the build.')
@@ -43,8 +43,10 @@ print('Build directory = ' + args.build_dir)
 
 
 def minify(f):
+    
     """
     Returns the "minified" file data with removed __debug__ code blocks.
+    This is broken, maybe fix in the future.
     """
 
     data = ''
@@ -57,7 +59,7 @@ def minify(f):
 
     for line in f:
         thisIndentLevel = len(line) - len(line.lstrip())
-        if ('if __debug__:' not in line) and (not debugBlock):
+        if line.strip() == '' or ('if __debug__:' not in line) and (not debugBlock):
             data += line
             continue
         elif 'if __debug__:' in line:
@@ -79,6 +81,7 @@ def minify(f):
             data += line[4:]
 
     return data
+    
 
 
 for module in args.modules:
@@ -133,7 +136,13 @@ with open(configFilePath) as f:
 # Next, we need the DC file:
 dcData = ''
 filepath = os.path.join(args.src_dir, 'astron/dclass')
-for filename in os.listdir(filepath):
+
+""" The OTP DClass NEEDS to come first! """
+dcFiles = os.listdir(filepath)
+dcFiles.sort()
+print(dcFiles)
+
+for filename in dcFiles:
     if filename.endswith('.dc'):
         fullpath = str(Filename.fromOsSpecific(os.path.join(filepath, filename)))
         print('Reading %s...' % fullpath)
@@ -146,8 +155,8 @@ for filename in os.listdir(filepath):
 
 # Finally, write our data to game_data.py:
 print('Writing game_data.py...')
-gameData = 'CONFIG = %r\nDC = %r\n'
-with open(os.path.join(args.build_dir, 'game_data.py'), 'wb') as f:
+gameData = 'CONFIG = %r\nDC = b%r\n'
+with open(os.path.join(args.build_dir, 'game_data.py'), 'w') as f:
     f.write(gameData % (configData, dcData.strip()))
 
 # We have all of the code gathered together. Let's create the multifiles now:
