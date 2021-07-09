@@ -58,8 +58,10 @@ def minify(f):
     indentLevel = 0
 
     for line in f:
-        thisIndentLevel = len(line) - len(line.lstrip())
-        if line.strip() == '' or ('if __debug__:' not in line) and (not debugBlock):
+
+        thisIndentLevel = len(line) - len(line.lstrip()) if len(line.lstrip()) > 0 else 0
+        
+        if ('if __debug__:' not in line) and (not debugBlock):
             data += line
             continue
         elif 'if __debug__:' in line:
