@@ -9814,7 +9814,6 @@ if __debug__:
 else:
     vfs = VirtualFileSystem.getGlobalPtr() # Define vfs to be available to us
     filename = '/phase_3/etc/' + PetNameMaster
-
     found = vfs.resolveFilename(filename, searchPath)
     if not found:
         print('Error no pet name file')
